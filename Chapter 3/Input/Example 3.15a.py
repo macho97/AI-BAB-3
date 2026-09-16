@@ -1,0 +1,16 @@
+# Example 3.15a Linear Regression
+import matplotlib.pyplot as plt
+import statsmodels.api as sm
+
+x = [0, 1, 2, 3, 4]
+y = [3, 5, 5, 6, 7]
+x1 = sm.add_constant(x)
+results = sm.OLS(y, x1).fit()
+print(results.params)
+print(results.summary())
+y_pred = results.predict(x1)
+plt.scatter(x, y)
+plt.xlabel("X")
+plt.ylabel("Y")
+plt.plot(x, y_pred, "r")
+plt.show()
